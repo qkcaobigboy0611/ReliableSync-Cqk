@@ -168,4 +168,9 @@ public class MessageService {
         queryWrapper.eq("messageId", messageId);
         return reliableSyncMapper.selectOne(queryWrapper);
     }
+
+    public MessageV1 findMessageV1ByMessageId(String messageId) {
+        Message message = this.getMessageByMessageId(messageId);
+        return BeanUtils.convertType(message, MessageV1.class);
+    }
 }
